@@ -1,4 +1,4 @@
-package com.playwright.practice.tests;
+package com.playwright.practice.tests.integration;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
