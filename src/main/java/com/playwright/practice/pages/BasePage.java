@@ -7,10 +7,9 @@ import org.slf4j.LoggerFactory;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.playwright.practice.tests.LoginTest;
 
 public abstract class BasePage {
-    private static final Logger logger = (Logger) LoggerFactory.getLogger(LoginTest.class);
+    private static final Logger logger = (Logger) LoggerFactory.getLogger(BasePage.class);
     protected Page page;
 
     public BasePage(Page page) {
