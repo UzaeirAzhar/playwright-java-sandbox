@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.microsoft.playwright.*;
-import com.microsoft.playwright.options.ColorScheme;
 import com.playwright.practice.config.SecretsConfig;
 import com.playwright.practice.pages.DashboardPage;
 import com.playwright.practice.pages.LoginPage;
@@ -31,24 +30,21 @@ public class DashboardTest {
 
     @Test
     public void dashboardTest() {
-        // Perform login as student and check dashboard
-        performLoginAsStudent();
-        performDashboardTest();
 
         // Perform login as teacher and check dashboard
         performLoginAsTeacher();
-        performDashboardTest();
+        performDashboardTestForTeacher();
+
+        // Perform login as student and check dashboard
+        performLoginAsStudent();
+        performDashboardTestForStudent();
 
         page.pause();
     }
 
-    private static Browser.NewContextOptions getBrowserContextOptions() {
-        return new Browser.NewContextOptions().setColorScheme(ColorScheme.DARK);
-    }
-
     private void performLoginAsStudent() {
         logger.info("Logging in as Student...");
-        BrowserContext studentContext = browser.newContext(getBrowserContextOptions());
+        BrowserContext studentContext = BrowserFactory.getNewBrowserContext(browser);
         Page studentPage = studentContext.newPage();
 
         studentPage.navigate(config.getUrl());
@@ -68,7 +64,7 @@ public class DashboardTest {
 
     private void performLoginAsTeacher() {
         logger.info("Logging in as Teacher...");
-        BrowserContext teacherContext = browser.newContext(getBrowserContextOptions());
+        BrowserContext teacherContext = BrowserFactory.getNewBrowserContext(browser);
         Page teacherPage = teacherContext.newPage();
 
         teacherPage.navigate(config.getUrl());
@@ -86,10 +82,19 @@ public class DashboardTest {
         this.page = teacherPage;
     }
 
-    private void performDashboardTest() {
+    private void performDashboardTestForTeacher() {
         DashboardPage dashboardPage = new DashboardPage(page);
         dashboardPage.isWelcomeSectionVisible();
         dashboardPage.isNewsSectionInDashboardVisible();
+        dashboardPage.isPublishedTasksSectionVisible();
+        dashboardPage.isDraftTaskSectionVisible();
+    }
+
+    private void performDashboardTestForStudent() {
+        DashboardPage dashboardPage = new DashboardPage(page);
+        dashboardPage.isWelcomeSectionVisible();
+        dashboardPage.isNewsSectionInDashboardVisible();
+        dashboardPage.isPublishedTasksSectionVisible();
     }
 
     @AfterAll

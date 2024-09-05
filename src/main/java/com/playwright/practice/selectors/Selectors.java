@@ -6,7 +6,9 @@ public enum Selectors {
     PASSWORD_INPUT_SEL("password-email"),
     LOGIN_BTN_SEL("submit-login-email"),
     DASHBOARD_WELCOME_SECTION("welcome-section"),
-    DASHBOARD_NEWS_SECTION("news-section");
+    DASHBOARD_NEWS_SECTION("news-section"),
+    DASHBOARD_PUBLISHED_TASKS_SECTION("published-tasks-section"),
+    DASHBOARD_DRAFT_TASK_SECTION("private-tasks-section");
 
     private final String selector;
 
