@@ -74,16 +74,16 @@ public class LoginTest {
 
     @BeforeAll
     public static void setup() {
-        logger.info("Setting up the Playwright environment starts...");
+        // logger.info("Setting up the Playwright environment starts...");
         browser = BrowserFactory.getBrowser();
         config = new SecretsConfig();
-        logger.info("Setting up the Playwright environment completes...");
+        // logger.info("Setting up the Playwright environment completes...");
     }
 
     @Test
     public void loginTest() {
         // Perform login in the initial context
-        // performLoginInNewContext();
+        performLoginInNewContext();
 
         // Perform login in a new context
         // performLoginInNewContext();

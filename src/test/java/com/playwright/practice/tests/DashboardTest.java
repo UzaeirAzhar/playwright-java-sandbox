@@ -89,6 +89,7 @@ public class DashboardTest {
     private void performDashboardTest() {
         DashboardPage dashboardPage = new DashboardPage(page);
         dashboardPage.isWelcomeSectionVisible();
+        dashboardPage.isNewsSectionInDashboardVisible();
     }
 
     @AfterAll

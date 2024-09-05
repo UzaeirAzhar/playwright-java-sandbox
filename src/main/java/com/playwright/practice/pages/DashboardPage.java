@@ -14,10 +14,20 @@ public class DashboardPage extends BasePage {
         return page.getByTestId(Selectors.DASHBOARD_WELCOME_SECTION.getSelector());
     }
 
+    private Locator newSection() {
+        return page.getByTestId(Selectors.DASHBOARD_NEWS_SECTION.getSelector());
+    }
+
     public void isWelcomeSectionVisible() {
         waitForElementToBeVisible(welcomeSectionHeader());
         isVisible(welcomeSectionHeader());
         waitForElementToBeVisible(welcomeSectionHeader());
+    }
+
+    public void isNewsSectionInDashboardVisible() {
+        waitForElementToBeVisible(newSection());
+        isVisible(newSection());
+        waitForElementToBeVisible(newSection());
     }
 
 }
