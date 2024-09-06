@@ -18,4 +18,10 @@ public class LoginHelper {
         loginPage.enterPassword(password);
         loginPage.clickLoginButton();
     }
+
+    public static void invalidLogin(Page page, String url) {
+        login(page, url, "abc@gmx.de", "asdfgh");
+        LoginPage loginPage = new LoginPage(page);
+        loginPage.assertInvalidLoginNotification();
+    }
 }

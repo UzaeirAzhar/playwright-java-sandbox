@@ -28,6 +28,10 @@ public class LoginPage extends BasePage {
         return page.getByTestId(Selectors.LOGIN_BTN_SEL.getSelector()).last();
     }
 
+    private Locator invalidLoginNotificationLocator() {
+        return page.getByTestId(Selectors.INVALID_LOGIN_NOTIFICATION.getSelector());
+    }
+
     public void clickOnEmailOptionBtn() {
         click(emailOptionBtn());
     }
@@ -58,6 +62,12 @@ public class LoginPage extends BasePage {
 
     public boolean isLoginButtonVisible() {
         return isVisible(loginButton());
+    }
+
+    public void assertInvalidLoginNotification() {
+        waitForElementToBeVisible(invalidLoginNotificationLocator());
+        isVisible(invalidLoginNotificationLocator());
+        waitForElementToBeVisible(invalidLoginNotificationLocator());
     }
 
 }

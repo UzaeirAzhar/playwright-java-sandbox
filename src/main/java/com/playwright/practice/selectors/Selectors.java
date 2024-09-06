@@ -8,7 +8,8 @@ public enum Selectors {
     DASHBOARD_WELCOME_SECTION("welcome-section"),
     DASHBOARD_NEWS_SECTION("news-section"),
     DASHBOARD_PUBLISHED_TASKS_SECTION("published-tasks-section"),
-    DASHBOARD_DRAFT_TASK_SECTION("private-tasks-section");
+    DASHBOARD_DRAFT_TASK_SECTION("private-tasks-section"),
+    INVALID_LOGIN_NOTIFICATION("notification");
 
     private final String selector;
 
