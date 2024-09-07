@@ -12,19 +12,22 @@ public class SecretsConfig {
     private Properties properties = new Properties();
 
     public SecretsConfig() {
-        loadProperties("secrets.properties");
-        loadProperties("configurations.properties");
+        // Consolidate both secrets and configurations into one properties object
+        consolidateProperties("secrets.properties", "configurations.properties");
     }
 
-    private void loadProperties(String fileName) {
-        try (InputStream input = getClass().getClassLoader().getResourceAsStream(fileName)) {
-            if (input == null) {
-                logger.error("Unable to find {}", fileName);
-                return;
+    private void consolidateProperties(String... fileNames) {
+        for (String fileName : fileNames) {
+            try (InputStream input = getClass().getClassLoader().getResourceAsStream(fileName)) {
+                if (input == null) {
+                    logger.error("Unable to find {}", fileName);
+                    continue;
+                }
+                properties.load(input);
+                logger.info("{} loaded successfully", fileName);
+            } catch (IOException ex) {
+                logger.error("Error loading properties from file: {}", fileName, ex);
             }
-            properties.load(input);
-        } catch (IOException ex) {
-            logger.error("Error loading properties from file: {}", fileName, ex);
         }
     }
 
