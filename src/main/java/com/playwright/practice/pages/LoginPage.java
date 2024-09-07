@@ -29,7 +29,7 @@ public class LoginPage extends BasePage {
     }
 
     private Locator invalidLoginNotificationLocator() {
-        return page.getByTestId(Selectors.INVALID_LOGIN_NOTIFICATION.getSelector());
+        return page.getByTestId(Selectors.INVALID_LOGIN_NOTIFICATION.getSelector()).last();
     }
 
     public void clickOnEmailOptionBtn() {
