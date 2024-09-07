@@ -1,10 +1,14 @@
 package com.playwright.practice.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
 public class SecretsConfig {
+    private static final Logger logger = LoggerFactory.getLogger(SecretsConfig.class);
     private Properties properties = new Properties();
 
     public SecretsConfig() {
@@ -15,12 +19,12 @@ public class SecretsConfig {
     private void loadProperties(String fileName) {
         try (InputStream input = getClass().getClassLoader().getResourceAsStream(fileName)) {
             if (input == null) {
-                System.out.println("Sorry, unable to find secrets.properties");
+                logger.error("Unable to find {}", fileName);
                 return;
             }
             properties.load(input);
         } catch (IOException ex) {
-            ex.printStackTrace();
+            logger.error("Error loading properties from file: {}", fileName, ex);
         }
     }
 
