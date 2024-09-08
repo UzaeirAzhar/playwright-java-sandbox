@@ -17,13 +17,13 @@ public class BrowserFactory {
     }
 
     private static BrowserType.LaunchOptions getBrowserOptions() {
-        boolean headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
+        boolean headless = Boolean.parseBoolean(System.getProperty("headless", "true"));
         return new BrowserType.LaunchOptions().setHeadless(headless);
     }
 
     public static BrowserContext getNewBrowserContext(Browser browser) {
         Browser.NewContextOptions contextOptions = new Browser.NewContextOptions()
-                .setViewportSize(2072, 1920)
+                .setViewportSize(1024, 768)
                 .setColorScheme(ColorScheme.DARK);
 
         return browser.newContext(contextOptions);

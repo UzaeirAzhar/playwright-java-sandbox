@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  build:
+  development:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,13 +17,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Set up Playwright (uncomment this if Playwright is needed)
+      # Step 2: Set up Playwright
       - name: Playwright GitHub Action
         uses: microsoft/playwright-github-action@v1
         with:
           args: install
 
-      # Step 3: Set up JDK 11 for Maven build (Ensure this matches your project requirements)
+      # Step 3: Set up JDK 11 for Maven build
       - name: Set up JDK 11
         uses: actions/setup-java@v3
         with:
@@ -56,14 +56,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      # Step 8: Build & Install dependencies
+      # Step 8: Install XVFB
+      - name: Install XVFB
+        run: sudo apt-get install -y xvfb
+
+      # Step 9: Build & Install dependencies
       - name: Build & Install
         run: mvn -B install -DskipTests --no-transfer-progress
 
-      # Step 9: Run Maven verify (this will also handle Playwright installation if needed)
+      # Step 10: Run Maven verify with XVFB
       - name: Run Maven verify
-        run: mvn verify -Pintegration-tests -X
-
-    # Uncomment if you need to install Playwright browsers explicitly
-    # - name: Install Playwright browsers
-    #   run: mvn com.microsoft.playwright:playwright-maven-plugin:install
+        run: xvfb-run -a mvn verify -Pintegration-tests -X
