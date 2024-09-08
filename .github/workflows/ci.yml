@@ -50,7 +50,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      # Step 7: Run Maven verify (this will also handle Playwright installation)
+      # Step 7: Install Playwright browsers (if needed)
+      - name: Install Playwright browsers
+        run: mvn playwright:install
+
+      # Step 8: Run Maven verify (this will also handle Playwright installation)
       - name: Run Maven verify
         run: mvn verify -Pintegration-tests
 
