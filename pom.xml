@@ -80,19 +80,6 @@
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
-
-            <plugin>
-            <groupId>com.microsoft.playwright</groupId>
-            <artifactId>playwright-maven-plugin</artifactId>
-            <version>1.30.0</version> <!-- Replace with the appropriate version -->
-            <executions>
-                <execution>
-                    <goals>
-                        <goal>install</goal>
-                    </goals>
-                </execution>
-            </executions>
-            </plugin>
         </plugins>
     </build>
 
