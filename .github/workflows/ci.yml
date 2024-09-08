@@ -1,0 +1,55 @@
+name: Playwright Java CI integration
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up JDK 11 for Maven build
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin' # Use Temurin JDK
+          java-version: '17'
+
+      # Step 3: Create secrets.properties file with GitHub Secrets
+      - name: Create secrets.properties
+        run: |
+          echo "student.email=${{ secrets.STUDENT_EMAIL }}" > src/main/resources/secrets.properties
+          echo "student.password=${{ secrets.STUDENT_PASSWORD }}" >> src/main/resources/secrets.properties
+          echo "teacher.email=${{ secrets.TEACHER_EMAIL }}" >> src/main/resources/secrets.properties
+          echo "teacher.password=${{ secrets.TEACHER_PASSWORD }}" >> src/main/resources/secrets.properties
+
+      # Step 4: Create configuration.properties file with GitHub Secrets
+      - name: Create configuration.properties
+        run: |
+          echo "nbc.url=${{ secrets.NBC_URL }}" > src/main/resources/configurations.properties
+
+      # Step 5: Cache Maven dependencies
+      - name: Cache Maven repository
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      # Step 6: Install Playwright browsers (if needed)
+      - name: Install Playwright browsers
+        run: mvn playwright:install
+
+      # Step 7: Run Maven tests
+      - name: Run Maven tests
+        run: mvn test -Pintegration-tests
