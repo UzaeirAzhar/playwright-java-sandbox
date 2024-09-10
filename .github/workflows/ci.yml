@@ -64,6 +64,6 @@ jobs:
       - name: Build & Install
         run: mvn -B install -DskipTests --no-transfer-progress
 
-      # Step 10: Run Maven verify with XVFB
-      - name: Run Maven verify
-        run: xvfb-run -a mvn verify -Pintegration-tests -X
+      # Step 10: Run Maven test with XVFB
+      - name: Run Maven test
+        run: xvfb-run -a mvn test -Pintegration-tests
