@@ -41,7 +41,6 @@ jobs:
         run: |
           echo "nbc.url=${{ secrets.NBC_URL }}" > src/main/resources/configurations.properties
 
-      # Step 7: Cache Maven dependencies
       - name: Cache Maven repository
         uses: actions/cache@v3
         with:
