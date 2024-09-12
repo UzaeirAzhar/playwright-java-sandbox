@@ -30,7 +30,6 @@ jobs:
       - name: Create directories for properties files
         run: mkdir -p src/main/resources
 
-      # Step 5: Create secrets.properties file with GitHub Secrets
       - name: Create secrets.properties
         run: |
           echo "student.email=${{ secrets.STUDENT_EMAIL }}" > src/main/resources/secrets.properties
@@ -38,7 +37,6 @@ jobs:
           echo "teacher.email=${{ secrets.TEACHER_EMAIL }}" >> src/main/resources/secrets.properties
           echo "teacher.password=${{ secrets.TEACHER_PASSWORD }}" >> src/main/resources/secrets.properties
 
-      # Step 6: Create configuration.properties file with GitHub Secrets
       - name: Create configuration.properties
         run: |
           echo "nbc.url=${{ secrets.NBC_URL }}" > src/main/resources/configurations.properties
