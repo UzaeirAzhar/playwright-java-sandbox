@@ -49,7 +49,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      # Step 8: Install XVFB
       - name: Install XVFB
         run: sudo apt-get install -y xvfb
 
