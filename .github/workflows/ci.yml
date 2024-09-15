@@ -52,7 +52,6 @@ jobs:
       - name: Install XVFB
         run: sudo apt-get install -y xvfb
 
-      # Step 9: Build & Install dependencies
       - name: Build & Install
         run: mvn -B install -DskipTests --no-transfer-progress
 
