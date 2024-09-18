@@ -17,7 +17,6 @@ public class DashboardHelper {
         DashboardPage dashboardPage = new DashboardPage(page);
         dashboardPage.isWelcomeSectionVisible();
         dashboardPage.isNewsSectionInDashboardVisible();
-        // dashboardPage.isPublishedTasksSectionVisible();
         if (isTeacher) {
             dashboardPage.isDraftTaskSectionVisible();
         }
