@@ -23,7 +23,7 @@ public class BrowserFactory {
 
     public static BrowserContext getNewBrowserContext(Browser browser) {
         Browser.NewContextOptions contextOptions = new Browser.NewContextOptions()
-                .setViewportSize(1024, 768)
+                .setViewportSize(1724, 768)
                 .setColorScheme(ColorScheme.DARK);
 
         return browser.newContext(contextOptions);
