@@ -21,10 +21,4 @@ public class PageFactory {
     public static DashboardPage getDashboardPage(Page page) {
         return getPage(DashboardPage.class, page);
     }
-
-    // to implement in future versions
-    // public static HomePage getHomePage(Page page) {
-    // return getPage(HomePage.class, page);
-    // }
-
 }
