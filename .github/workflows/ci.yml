@@ -58,8 +58,8 @@ jobs:
       - name: Run Maven Integration Tests
         run: xvfb-run -a mvn test -Pintegration-tests
 
-      # - name: Generate HTML Report
-      #   run: xvfb-run -a mvn surefire-report:report-only
+      - name: Generate HTML Report
+        run: xvfb-run -a mvn surefire-report:report-only
 
       - name: Generate Site for HTML Report
         run: xvfb-run -a mvn site -DskipTests
@@ -72,4 +72,4 @@ jobs:
         with:
           name: test-reports
           path: |
-            ${{ github.workspace }}/target/site/summary.html
+            ${{ github.workspace }}/target/site/surefire-report.html
