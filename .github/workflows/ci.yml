@@ -61,8 +61,12 @@ jobs:
       - name: Generate HTML Report
         run: xvfb-run -a mvn surefire-report:report-only
 
+      - name: Check if report exists
+        run: ls -R ${{ github.workspace }}/target/site || echo "Report directory does not exist"
+
       - name: Upload Test Reports
         uses: actions/upload-artifact@v3
         with:
           name: test-reports
-          path: target/site/surefire-report.html
+          path: |
+            ${{ github.workspace }}/target/site/surefire-report.html
