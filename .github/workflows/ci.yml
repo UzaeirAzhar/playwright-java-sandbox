@@ -72,4 +72,4 @@ jobs:
         with:
           name: test-reports
           path: |
-            ${{ github.workspace }}/target/site/surefire-report.html
+            ${{ github.workspace }}/target/site/summary.html
