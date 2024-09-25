@@ -55,5 +55,14 @@ jobs:
       - name: Build & Install
         run: mvn -B install -DskipTests --no-transfer-progress
 
-      - name: Run Maven test
+      - name: Run Maven Integration Tests
         run: xvfb-run -a mvn test -Pintegration-tests
+
+      - name: Generate HTML Report
+        run: xvfb-run -a mvn surefire-report:report-only
+
+      - name: Upload Test Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-reports
+          path: target/site/surefire-report.html
