@@ -1,4 +1,4 @@
-name: Playwright Java CI integration
+name: Playwright Java CI Integration
 
 on:
   push:
@@ -58,18 +58,17 @@ jobs:
       - name: Run Maven Integration Tests
         run: xvfb-run -a mvn test -Pintegration-tests
 
-      - name: Generate HTML Report
-        run: xvfb-run -a mvn surefire-report:report-only
-
       - name: Generate Site for HTML Report
         run: xvfb-run -a mvn site -DskipTests
 
-      - name: Check if report exists
+      - name: Check if report exists in site
         run: ls -R ${{ github.workspace }}/target/site || echo "Report directory does not exist"
+
+      - name: Check Surefire Reports
+        run: ls -R ${{ github.workspace }}/target/site/surefire-reports || echo "Surefire report directory does not exist"
 
       - name: Upload Test Reports
         uses: actions/upload-artifact@v3
         with:
           name: test-reports
-          path: |
-            ${{ github.workspace }}/target/site/surefire-report.html
+          path: ${{ github.workspace }}/target/site
