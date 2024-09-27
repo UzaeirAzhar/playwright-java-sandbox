@@ -12,8 +12,8 @@
 
     <properties>
         <!-- Default values for browser and headless mode -->
-        <browser>firefox</browser> <!-- Default browser -->
-        <headless>false</headless> <!-- Default to headless mode -->
+        <browser>firefox</browser>
+        <headless>false</headless>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -73,10 +73,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M3</version>
+                <version>3.0.0-M5</version>
                 <configuration>
                     <systemPropertyVariables>
-                        <!-- Use the defined properties as default values -->
                         <headless>${headless}</headless>
                         <browser>${browser}</browser>
                     </systemPropertyVariables>
@@ -84,17 +83,17 @@
                 </configuration>
             </plugin>
 
-            <!-- Maven Surefire Report Plugin to generate HTML reports -->
+            <!-- Maven Surefire Report Plugin to generate HTML reports inside site folder -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>3.0.0-M3</version>
+                <version>3.0.0-M5</version>
                 <configuration>
-                    <outputDirectory>${project.build.directory}/surefire-reports</outputDirectory>
+                    <outputDirectory>${project.build.directory}/site/surefire-reports</outputDirectory> <!-- Generates in site folder -->
                 </configuration>
             </plugin>
 
-            <!-- Maven Site Plugin with Doxia to generate the site and avoid the verbatim() error -->
+            <!-- Maven Site Plugin to generate the site and include the Surefire report -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
@@ -115,6 +114,20 @@
         </plugins>
     </build>
 
+    <!-- Reporting section to ensure Surefire reports are included in the site -->
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+                    <outputDirectory>${project.build.directory}/site/surefire-reports</outputDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+
     <profiles>
         <!-- Unit Test Profile -->
         <profile>
@@ -124,7 +137,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>3.0.0-M3</version>
+                        <version>3.0.0-M5</version>
                         <configuration>
                             <includes>
                                 <include>**/unit/**/*.java</include>
@@ -143,7 +156,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>3.0.0-M3</version>
+                        <version>3.0.0-M5</version>
                         <configuration>
                             <includes>
                                 <include>**/integration/**/*.java</include>
@@ -162,7 +175,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>3.0.0-M3</version>
+                        <version>3.0.0-M5</version>
                         <configuration>
                             <includes>
                                 <include>**/e2e/**/*.java</include>
@@ -181,7 +194,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>3.0.0-M3</version>
+                        <version>3.0.0-M5</version>
                         <configuration>
                             <includes>
                                 <include>**/api/**/*.java</include>
