@@ -2,6 +2,7 @@ package com.playwright.practice.utils;
 
 import com.microsoft.playwright.Page;
 import com.playwright.practice.pages.BasePage;
+import com.playwright.practice.pages.CourseOverviewPage;
 import com.playwright.practice.pages.DashboardPage;
 import com.playwright.practice.pages.LoginPage;
 
@@ -20,5 +21,9 @@ public class PageFactory {
 
     public static DashboardPage getDashboardPage(Page page) {
         return getPage(DashboardPage.class, page);
+    }
+
+    public static CourseOverviewPage getCourseOverviewPage(Page page) {
+        return getPage(CourseOverviewPage.class, page);
     }
 }
