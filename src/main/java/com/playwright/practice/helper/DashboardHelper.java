@@ -3,6 +3,7 @@ package com.playwright.practice.helper;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
 import com.playwright.practice.pages.DashboardPage;
+import com.playwright.practice.utils.PageFactory;
 
 public class DashboardHelper {
     public static void loginAndNavigateToDashboard(Page page, BrowserContext context, String url, String email,
@@ -14,7 +15,7 @@ public class DashboardHelper {
     }
 
     private static void assertDashboardNavigation(Page page, boolean isTeacher) {
-        DashboardPage dashboardPage = new DashboardPage(page);
+        DashboardPage dashboardPage = PageFactory.getDashboardPage(page);
         dashboardPage.isWelcomeSectionVisible();
         dashboardPage.isNewsSectionInDashboardVisible();
         if (isTeacher) {
