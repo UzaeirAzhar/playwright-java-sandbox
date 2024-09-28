@@ -3,6 +3,7 @@ package com.playwright.practice.helper;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
 import com.playwright.practice.pages.CourseOverviewPage;
+import com.playwright.practice.utils.PageFactory;
 
 public class CourseOverviewHelper {
     public static void loginAndNavigateToCourseOverview(Page page, BrowserContext context, String url, String email,
@@ -14,7 +15,7 @@ public class CourseOverviewHelper {
     }
 
     private static void assertCourseOverviewNavigation(Page page) {
-        CourseOverviewPage courseOverview = new CourseOverviewPage(page);
+        CourseOverviewPage courseOverview = PageFactory.getCourseOverviewPage(page);
         courseOverview.clickOnCourseOverviewInSideMenu();
         courseOverview.assertSearchFieldInCourseViewIsVisible();
     }
