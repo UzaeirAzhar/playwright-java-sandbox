@@ -15,7 +15,7 @@ public class DashboardHelper {
     }
 
     private static void assertDashboardNavigation(Page page, boolean isTeacher) {
-        DashboardPage dashboardPage = PageFactory.getDashboardPage(page);
+        DashboardPage dashboardPage = PageFactory.getPage(DashboardPage.class, page);
         dashboardPage.isWelcomeSectionVisible();
         dashboardPage.isNewsSectionInDashboardVisible();
         if (isTeacher) {
