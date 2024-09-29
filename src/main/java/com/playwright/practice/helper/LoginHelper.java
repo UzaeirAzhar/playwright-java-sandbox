@@ -13,7 +13,7 @@ public class LoginHelper {
     public static void login(Page page, String url, String email, String password) {
         logger.info("Login as a user...");
         page.navigate(url);
-        LoginPage loginPage = PageFactory.getLoginPage(page);
+        LoginPage loginPage = PageFactory.getPage(LoginPage.class, page);
         loginPage.clickOnEmailOptionBtn();
         loginPage.enterEmail(email);
         loginPage.enterPassword(password);
@@ -22,7 +22,7 @@ public class LoginHelper {
 
     public static void invalidLogin(Page page, String url) {
         login(page, url, "abc@gmx.de", "asdfgh");
-        LoginPage loginPage = PageFactory.getLoginPage(page);
+        LoginPage loginPage = PageFactory.getPage(LoginPage.class, page);
         loginPage.assertInvalidLoginNotification();
     }
 }
