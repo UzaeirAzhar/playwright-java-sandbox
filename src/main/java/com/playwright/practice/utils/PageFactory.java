@@ -14,16 +14,4 @@ public class PageFactory {
             throw new RuntimeException("Failed to create page: " + pageClass.getName(), e);
         }
     }
-
-    public static LoginPage getLoginPage(Page page) {
-        return getPage(LoginPage.class, page);
-    }
-
-    public static DashboardPage getDashboardPage(Page page) {
-        return getPage(DashboardPage.class, page);
-    }
-
-    public static CourseOverviewPage getCourseOverviewPage(Page page) {
-        return getPage(CourseOverviewPage.class, page);
-    }
 }
