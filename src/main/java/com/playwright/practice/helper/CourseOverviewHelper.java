@@ -15,7 +15,7 @@ public class CourseOverviewHelper {
     }
 
     private static void assertCourseOverviewNavigation(Page page) {
-        CourseOverviewPage courseOverview = PageFactory.getCourseOverviewPage(page);
+        CourseOverviewPage courseOverview = PageFactory.getPage(CourseOverviewPage.class, page);
         courseOverview.clickOnCourseOverviewInSideMenu();
         courseOverview.assertSearchFieldInCourseViewIsVisible();
     }
