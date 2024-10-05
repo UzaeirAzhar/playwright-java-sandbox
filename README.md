@@ -4,12 +4,12 @@ This is a Java-based Playwright Automation Framework designed for UI testing. Th
 
 ## Table of Contents
 
-- Project Structure
-- Dependencies
-- Test Categories
-- How to Run Tests
-- Environment Configuration
-- Page Object Model (POM)
-- Reporting
-- Script Execution
-- Contributing
+- [Project Structure](README.md)
+- [Dependencies](README.md)
+- [Test Categories](README.md)
+- [How to Run Tests](README.md)
+- [Environment Configuration](README.md)
+- [Page Object Model (POM)](README.md)
+- [Reporting](README.md)
+- [Script Execution](README.md)
+- [Contributing](README.md)
