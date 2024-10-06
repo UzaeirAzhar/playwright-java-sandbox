@@ -5,7 +5,7 @@ This is a Java-based Playwright Automation Framework designed for UI testing. Th
 ## Table of Contents
 
 - [Project Structure](./docs/project_structure.md)
-- [Dependencies](README.md)
+- [Dependencies](./docs/dependencies.md)
 - [Test Categories](README.md)
 - [How to Run Tests](README.md)
 - [Environment Configuration](README.md)
