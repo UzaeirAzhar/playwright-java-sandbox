@@ -34,21 +34,24 @@ You can run the tests by using Maven commands:
 
 There is a Bash script [run-test.sh](../src/main/java/com/playwright/practice/scripts/run-test.sh) to run tests locally without Maven commands. To use the script:
 
-Give it execution permission (if not already):
+1) Give it execution permission (if not already):
 
-bash
-Copy code
-chmod +x src/main/java/com/playwright/practice/scripts/run-test.sh
-Run the script:
+    ```bash
+    chmod +x src/main/java/com/playwright/practice/scripts/run-test.sh
+    ```
 
-bash
-Copy code
-./src/main/java/com/playwright/practice/scripts/run-test.sh [test-type]
+2) Run the script:
+
+    ```bash
+    ./src/main/java/com/playwright/practice/scripts/run-test.sh [test-type]
+    ```
+
 Example:
 
-bash
-Copy code
+```bash
 ./src/main/java/com/playwright/practice/scripts/run-test.sh i -h true -b c -t LoginTest
+```
+
 i runs integration tests.
 -h true runs tests in headless mode.
 -b c runs tests in Chrome browser.
