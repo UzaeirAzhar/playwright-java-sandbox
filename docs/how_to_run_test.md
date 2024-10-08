@@ -52,7 +52,7 @@ Example:
 ./src/main/java/com/playwright/practice/scripts/run-test.sh i -h true -b c -t LoginTest
 ```
 
-i runs integration tests.
--h true runs tests in headless mode.
--b c runs tests in Chrome browser.
--t allows specifying a test class to run.
+- i runs integration tests.
+- -h true runs tests in headless mode.
+- -b c runs tests in Chrome browser.
+- -t allows specifying a test class to run.
