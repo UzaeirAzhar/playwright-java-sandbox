@@ -1,4 +1,5 @@
-Environment Configuration
+# Environment Configuration
+
 The project requires certain configurations to be set before running tests:
 
 secrets.properties: For sensitive information like API keys and credentials.
