@@ -1,4 +1,5 @@
-Page Object Model (POM)
+# Page Object Model (POM)
+
 This project uses the Page Object Model (POM) pattern to organize the UI interactions and test logic separately. Each page of the web application has a corresponding Java class in the pages/ package that contains the locators and actions related to that page.
 
 BasePage: Contains common actions like navigation, clicks, and waits.
